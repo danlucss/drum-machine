@@ -1,24 +1,28 @@
 import { useState } from "react";
+import "./index.scss"
+const ToggleSwitch = ({ onChange }) => {
+    const [powerOn, setPowerOn] = useState(false);
 
-const ToggleSwitch = ({ checked, onChange }) => {
-    const [isChecked, setIsChecked] = useState(checked);
+    const toggle = () => {
 
-    const handleChange = () => {
-        setIsChecked(!isChecked);
-        onChange(!isChecked);
-    };
-
+        setPowerOn(!powerOn);
+        onChange();
+    }
     return (
-        <div className="toggle-switch">
-            <input
-                type="checkbox"
-                className="toggle-switch__checkbox"
-                checked={isChecked}
-                onChange={handleChange}
-            />
-            <div className="toggle-switch__slider" />
-        </div>
-    );
+
+
+        <>
+
+            <div className="toggle-switch">
+                <button onClick={toggle} className={"togle--button" + (powerOn ? "toggle--close" : "")}>{powerOn ? "ON" : "OFF"}</button>
+                <div className="toggle-switch__track"></div>
+                <div className="toggle-switch__thumb"></div>
+            </div>
+
+        </>
+
+    )
+
 }
 
 export default ToggleSwitch;
