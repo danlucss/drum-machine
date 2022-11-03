@@ -9,7 +9,7 @@ import kickhat from "./assets/audio/Kick_n_Hat.mp3";
 import kick from "./assets/audio/RP4_KICK_1.mp3";
 import ride from "./assets/audio/RP4_KICK_1.mp3";
 
-import "./App.scss";
+
 import ToggleSwitch from "./components/ToggleSwitch";
 
 function App() {
