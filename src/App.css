@@ -1,16 +1,19 @@
 .background-container {
     background-color: black;
     color: #fff;
+
+    overflow: hidden;
 }
 
 video {
     height: 100vh;
     object-fit: cover;
-    width: 100%;
+    width: 100vw;
     position: absolute;
     top: 0;
     left: 0;
     z-index: -1;
+    overflow: hidden;
 }
 
 .App {
@@ -30,6 +33,7 @@ video {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
     grid-gap: 10px;
+    overflow: hidden;
 }
 
 .drum-pad {
@@ -78,7 +82,7 @@ input[type="range"] {
 }
 
 input[type="range"]::-webkit-slider-runnable-track {
-    width: 100%;
+    width: 100vw;
     height: 10px;
     cursor: pointer;
     font-size: 20px;
@@ -89,4 +93,17 @@ input[type="range"]::-webkit-slider-runnable-track {
     border: 0.2px solid #010101;
 
     transition: all 0.2s ease-in-out;
+}
+
+@media screen and (max-width: 700px) {
+    .App {
+        width: 92%;
+        margin: 0;
+        padding: 20px;
+        border: none;
+        background-color: rgba(204, 204, 204, 0.39);
+        color: #000;
+        border-radius: 0;
+        overflow: hidden;
+    }
 }
