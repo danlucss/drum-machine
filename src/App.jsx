@@ -9,6 +9,9 @@ import kickhat from "./assets/audio/Kick_n_Hat.mp3";
 import kick from "./assets/audio/RP4_KICK_1.mp3";
 import ride from "./assets/audio/RP4_KICK_1.mp3";
 
+import bgDark from "./assets/images/bg-dark.mp4";
+import "./App.css"
+
 
 import ToggleSwitch from "./components/ToggleSwitch";
 
@@ -17,6 +20,7 @@ function App() {
   const [power, setPower] = useState(false);
   const [volume, setVolume] = useState(0.5);
   const [bank, setBank] = useState(true);
+
 
   const drumPads = [
     {
@@ -81,6 +85,7 @@ function App() {
       audio.play();
       audio.volume = volume;
       setDisplay(e.target.id);
+
     }
   };
 
@@ -95,26 +100,43 @@ function App() {
   };
 
   const keycapHandler = e => {
-    drumPads.forEach(pad => {
-      if (e.keyCode === pad.keypad) {
-        const audio = document.getElementById(pad.id);
-        audio.play();
-        audio.volume = volume;
-        setDisplay(pad.name);
-      }
-    });
+    if (power) {
+      drumPads.forEach(pad => {
+        if (e.keyCode === pad.keypad) {
+          const audio = document.getElementById(pad.id);
+          audio.play();
+          audio.volume = volume;
+          setDisplay(pad.name);
+        }
+
+      });
+    }
   };
+
+  const playVideoHandler = () => {
+    if (power) {
+      const video = document.getElementById("video");
+      video.play();
+    }
+  }
 
 
   return (
     <>
       <div
-        className="App"
+        className="App">
+        <div className="background-container">
 
-      >
+          <video
+            className="background-video"
+            id="video"
+            src={bgDark}
+          ></video>
+        </div>
+
         <div className="drum-machine" id="drum-machine">
           <div className="display" id="display">
-            <h1>Drum Machine</h1>
+
             <ToggleSwitch onChange={handlePower} />
             <div className="volume">
               <input
@@ -124,21 +146,30 @@ function App() {
                 step="0.01"
                 value={volume}
                 onChange={handleVolume}
+                id="volume"
               />
             </div>
+
             <div className="display-text" id="display-text">
               <p>{display}</p>
             </div>
+            <div className="drumPads-container">
+              {drumPads.map((drumPad, i) => (
+                <button className="drum-pad" id={drumPad.name} onClick={playSound} value={drumPad} onKeyUp={keycapHandler} onKeyDown={keycapHandler} key={i}>
+                  {drumPad.id}
+                  <audio className="clip" id={drumPad.id} src={drumPad.src}></audio>
+                </button>
+              ))}
+            </div>
 
-            {drumPads.map((drumPad, i) => (
-              <button className="drum-pad" id={drumPad.name} onClick={playSound} value={drumPad} onKeyDown={keycapHandler} key={i}>
-                {drumPad.id}
-                <audio className="clip" id={drumPad.id} src={drumPad.src}></audio>
-              </button>
-            ))}
+          </div>
+          <div className="video-play">
+            <button className="video__btn" onClick={playVideoHandler}>Play</button>
           </div>
         </div>
       </div>
+
+
     </>
   );
 }

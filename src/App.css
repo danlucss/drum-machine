@@ -1,0 +1,92 @@
+.background-container {
+    background-color: black;
+    color: #fff;
+}
+
+video {
+    height: 100vh;
+    object-fit: cover;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.App {
+    width: 700px;
+    margin: 200px auto;
+    padding: 20px;
+    border: 2px solid rgb(255, 255, 255);
+    background-color: rgba(204, 204, 204, 0.39);
+    color: #000;
+    border-radius: 20px;
+
+    font: 14px "Century Gothic", Futura, sans-serif;
+}
+
+.drumPads-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 10px;
+}
+
+.drum-pad {
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #000;
+
+    font-size: 1.5rem;
+}
+
+.drum-pad:hover {
+    background-color: rgba(255, 255, 255, 0.76);
+    color: rgb(0, 0, 0);
+}
+
+.video__btn {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #000;
+    font-size: 1.5rem;
+    margin-top: 10px;
+    width: 100%;
+}
+
+#display-text {
+    margin: 20px 0;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(133, 128, 128);
+    color: rgb(255, 255, 255);
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+input[type="range"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 100%;
+    margin: 10px 0;
+    background-color: #fff;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 10px;
+    cursor: pointer;
+    font-size: 20px;
+
+    box-shadow: 1px 1px 1px #000000;
+    background: #f4f6f7;
+    border-radius: 25px;
+    border: 0.2px solid #010101;
+
+    transition: all 0.2s ease-in-out;
+}

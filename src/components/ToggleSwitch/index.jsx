@@ -2,11 +2,15 @@ import { useState } from "react";
 import "./index.scss"
 const ToggleSwitch = ({ onChange }) => {
     const [powerOn, setPowerOn] = useState(false);
+    const [active, setActive] = useState(false);
 
     const toggle = () => {
-
         setPowerOn(!powerOn);
         onChange();
+    }
+
+    const toggleActive = () => {
+        setActive(!active);
     }
     return (
 
@@ -14,9 +18,11 @@ const ToggleSwitch = ({ onChange }) => {
         <>
 
             <div className="toggle-switch">
-                <button onClick={toggle} className={"togle--button" + (powerOn ? "toggle--close" : "")}>{powerOn ? "ON" : "OFF"}</button>
-                <div className="toggle-switch__track"></div>
-                <div className="toggle-switch__thumb"></div>
+                <div onClick={toggle} className={"togle--button " + (powerOn ? "toggle--close" : "")}>{powerOn ? "ON" : "OFF"}
+
+                    <span onClick={toggleActive} className={"toggle-switch__track " + (powerOn ? "active" : "")}  ></span>
+                    <span onClick={toggleActive} className={"toggle-switch__thumb " + (powerOn ? "active" : "")}></span>
+                </div>
             </div>
 
         </>
